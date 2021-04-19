@@ -56,7 +56,9 @@ export default class ConsentPage extends LightningElement {
     columns = columns;
     loadSpinner = false;
     error ;
+    isSearchDisabled = true;
     
+    // to make apex call and get the Leads and Contacts data
     searchRec(){
         this.isDataPresent = true;
         this.loadSpinner = true;
@@ -79,11 +81,20 @@ export default class ConsentPage extends LightningElement {
             });
     }
     
+    // to get the input data from search box and set search button enabled and disabled
     handleOnchange(event){
         this.searchKey = event.target.value;
+        if(this.searchKey.length > 0 ){
+            this.isSearchDisabled = false;
+        }
+        if(this.searchKey.length === 0 ){
+            this.isSearchDisabled = true;
+        }
+    
        
     }
 
+    // save data to database for the changes made on UI of data table
     handleSave(event){
         
         this.saveDraftValues =event.detail.draftValues;
@@ -127,9 +138,5 @@ export default class ConsentPage extends LightningElement {
         
     }
 
-    refreshComponent(event){
-        eval("$A.get('e.force:refreshView').fire();");
-    }
-
-    
+   
 }
