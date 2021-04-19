@@ -6,7 +6,7 @@
                 <lightning-input type="search" name="searchKey" placeholder="Enter user email" onchange={handleOnchange} ></lightning-input>
             </lightning-layout-item>
             <lightning-layout-item class="slds-align_absolute-center"> 
-                <lightning-button label="Search" variant="Brand" onclick={searchRec}></lightning-button>
+                <lightning-button label="Search" variant="Brand" onclick={searchRec} disabled={isSearchDisabled} ></lightning-button>
             </lightning-layout-item>
         </lightning-layout>  
     </lightning-card>
