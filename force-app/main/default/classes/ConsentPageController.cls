@@ -14,9 +14,7 @@ public with sharing class ConsentPageController {
         String searchquery4 = ' ) ';
         String qt = '\'';
         String finalQuery = searchquery1 + qt + searchKey +qt + searchquery2 + fields + searchquery3 + fields + searchquery4;
-        system.debug('queryString: ' + finalQuery);
         List<List<SObject>>searchList = search.query(finalQuery);
-        system.debug('sosl: '+ searchList);
         finList.addAll(searchList[0]);
         finList.addAll(searchList[1]);
        
