@@ -5,6 +5,7 @@
  =========================================================================================================*/
 public with sharing class AccountTriggerHelper {
     
+    // to get all Sales rep for owner or secondary owner
     public static Map<String,List<String>> getSalesReps(List<String> accManagerIdList){
         Map<String,List<String>> managerIdSalesRepIdListMap = new Map<String,List<String>>();
         List<String> repIdList = new List<String>();
@@ -22,7 +23,7 @@ public with sharing class AccountTriggerHelper {
         return managerIdSalesRepIdListMap;
     }
 
-
+    // to prepare mapping for Account and Sales rep needs to be added on Account TEam member
     public static  Map<String,List<String>> addAccTeamMember(Map<String,String> accIdOwnerIdMap ,Map<String,List<String>> salesRepUserIdList){
         Map<String,List<String>> accIdTeamMemeberListMap = new Map<String,List<String>>();
         for(String accId : accIdOwnerIdMap.keySet()){
@@ -38,6 +39,7 @@ public with sharing class AccountTriggerHelper {
         return accIdTeamMemeberListMap;
     }
 
+    // do DML for Account Team Member for Account wrt to Owner and Secondary owner
     public static void insertAccTeamMember( Map<String,List<String>> mapOfAccIdTeamMemberToBeAdded, Boolean IsSecondaryOwnerChange){
         List<AccountTeamMember> atmList = new List<AccountTeamMember>();
         for(String accId : mapOfAccIdTeamMemberToBeAdded.keySet()){
